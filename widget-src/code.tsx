@@ -4,6 +4,7 @@ const {
   Input,
   SVG,
   Text,
+  useEffect,
   useSyncedState,
   useSyncedMap,
   usePropertyMenu,
@@ -41,19 +42,21 @@ function WebsiteNavigation() {
   }
 
   // Initialize with default item
-  if (!initialized) {
-    const defaultId = "000001"; // Static ID for initial item
-    const defaultItem: NavItem = {
-      id: defaultId,
-      label: "Home",
-      level: "primary",
-      parentId: null,
-      collapsed: false,
-    };
-    items.set(defaultId, defaultItem);
-    setItemIds([defaultId]);
-    setInitialized(true);
-  }
+  useEffect(() => {
+    if (!initialized) {
+      const defaultId = "000001"; // Static ID for initial item
+      const defaultItem: NavItem = {
+        id: defaultId,
+        label: "Home",
+        level: "primary",
+        parentId: null,
+        collapsed: false,
+      };
+      items.set(defaultId, defaultItem);
+      setItemIds([defaultId]);
+      setInitialized(true);
+    }
+  });
 
   // Add new item
   function addItem(level: "primary" | "secondary" | "tertiary", parentId: string | null) {
