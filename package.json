@@ -1,7 +1,7 @@
 {
-  "name": "Collapsible-Task-Card",
+  "name": "Website-Navigation",
   "version": "1.0.0",
-  "description": "Your Figma widget",
+  "description": "Website Navigation widget for FigJam",
   "scripts": {
     "build": "esbuild widget-src/code.tsx --bundle --outfile=dist/code.js --target=es6",
     "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
