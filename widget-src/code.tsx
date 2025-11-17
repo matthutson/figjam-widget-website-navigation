@@ -35,9 +35,14 @@ function WebsiteNavigation() {
   const [cardColor, setCardColor] = useSyncedState("cardColor", colors[0]);
   const items = useSyncedMap<NavItem>("items");
 
+  // Generate random ID
+  function generateId(): string {
+    return ("00000" + Math.floor(Math.random() * 1_000_000).toString()).slice(-6);
+  }
+
   // Initialize with default item
   if (!initialized) {
-    const defaultId = generateId();
+    const defaultId = "000001"; // Static ID for initial item
     const defaultItem: NavItem = {
       id: defaultId,
       label: "Home",
@@ -48,11 +53,6 @@ function WebsiteNavigation() {
     items.set(defaultId, defaultItem);
     setItemIds([defaultId]);
     setInitialized(true);
-  }
-
-  // Generate random ID
-  function generateId(): string {
-    return ("00000" + Math.floor(Math.random() * 1_000_000).toString()).slice(-6);
   }
 
   // Add new item
